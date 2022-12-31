@@ -64,4 +64,13 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# api_u_pizzas
+# U Pizza APIs
+
+### JWT Token
+
+docs: [Implementing JWT Authentication](https://blog.logrocket.com/implementing-jwt-authentication-laravel-9/#:~:text=Laravel%20JWT%20authentication%20vs.&text=Sanctum%20offers%20both%20session%2Dbased,implements%20full%20OAuth%202.0%20authorization.). 
+
+    Install:
+    composer require php-open-source-saver/jwt-auth
+    
+
