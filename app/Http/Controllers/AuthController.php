@@ -11,7 +11,7 @@ class AuthController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login','register']]);
+        $this->middleware('auth:api', ['except' => ['login', 'register']]);
     }
 
     public function login(Request $request)
@@ -32,31 +32,29 @@ class AuthController extends Controller
 
         $user = Auth::user();
         return response()->json([
-                'status' => 'success',
-                'user' => $user,
-                'authorisation' => [
-                    'token' => $token,
-                    'type' => 'bearer',
-                ]
+            'status' => 'success',
+            'user' => $user,
+            'authorisation' => [
+                'token' => $token,
+                'type' => 'bearer',
+            ]
         ]);
-
     }
 
-    public function register(Request $request){
+    public function register(Request $request)
+    {
         $userExists =
             User::where('email', '=', $request->email)->first();
 
-        if($userExists == null)
-        {
-            if($request->social_login == 'APP')
-            {
+        if ($userExists == null) {
+            if ($request->social_login == 'APP') {
                 $request->validate([
                     'name' => 'required|string|max:255',
                     'email' => 'required|string|email|max:255|unique:users',
                     'password' => 'required|string|min:6',
                 ]);
             } else {
-                 $request->validate([
+                $request->validate([
                     'name' => 'required|string|max:255',
                     'email' => 'required|string|email|max:255|unique:users',
                 ]);
@@ -65,6 +63,7 @@ class AuthController extends Controller
             $user = User::create([
                 'name' => $request->name,
                 'email' => $request->email,
+                'phone' => $request->phone,
                 'password' => Hash::make($request->password),
                 'social_login' => $request->social_login,
                 'social_id' => $request->social_id,
@@ -83,11 +82,10 @@ class AuthController extends Controller
                     'type' => 'bearer',
                 ]
             ]);
-        } else
-        {
+        } else {
             return response()->json([
                 'message' => 'Email existente registrado',
-            ]);
+            ], 400);
         }
     }
 
@@ -110,5 +108,21 @@ class AuthController extends Controller
                 'type' => 'bearer',
             ]
         ]);
+    }
+
+    public function confirmLogin(Request $request)
+    {
+        $user = User::where('email', '=', $request['email'])->first();
+
+        if ($user) {
+            $user->update($request->all());
+            return $user;
+        }
+        return response()->json(
+            [
+                'message' => 'Erro ao atualizar user',
+            ],
+            404
+        );
     }
 }
