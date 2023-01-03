@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\FindByToken;
 use App\Http\Controllers\TodoController;
 
 /*
@@ -21,8 +22,10 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('register', 'register');
     Route::post('logout', 'logout');
     Route::post('refresh', 'refresh');
-
+    Route::put('confirm_login', 'confirmLogin');
 });
+
+Route::get('/user', FindByToken::class);
 
 Route::controller(TodoController::class)->group(function () {
     Route::get('todos', 'index');
@@ -32,6 +35,6 @@ Route::controller(TodoController::class)->group(function () {
     Route::delete('todo/{id}', 'destroy');
 });
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
