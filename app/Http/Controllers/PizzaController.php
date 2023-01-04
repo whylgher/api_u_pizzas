@@ -42,6 +42,7 @@ class PizzaController extends Controller
             $pizza = Pizza::create([
                 'name' => $request->name,
                 'description' => $request->description,
+                'category' => $request->category,
             ]);
 
             return response()->json([
