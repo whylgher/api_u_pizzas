@@ -6,13 +6,24 @@ use App\Models\Pizza;
 use Exception;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class PizzaController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api');
+        $this->middleware('auth:api', ['except' => ['index']]);
+    }
+
+    public function index()
+    {
+        $pizzas = DB::table('pizzas')
+            ->join('image_pizzas', 'image_pizzas.pizza_id', '=', 'pizzas.id')
+            ->join('prices_pizzas', 'prices_pizzas.pizza_id', '=', 'pizzas.id')
+            ->get();
+
+        return $pizzas;
     }
 
     public function show($id)

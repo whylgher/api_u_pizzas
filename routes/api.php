@@ -34,6 +34,7 @@ Route::controller(AuthController::class)->group(function () {
 
 Route::controller(PizzaController::class)->group(function () {
     Route::post('create', 'create');
+    Route::get('pizzas', 'index');
     Route::get('pizza/{id}', 'show');
 });
 
