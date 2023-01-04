@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class FindByToken extends Controller
+class FindByTokenController extends Controller
 {
     public function __construct()
     {
