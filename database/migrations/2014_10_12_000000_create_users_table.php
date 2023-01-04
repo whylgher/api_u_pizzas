@@ -20,8 +20,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
             $table->string('phone')->unique()->nullable();
-            $table->string('address')->nullable();
-            $table->enum('social_login',['GOOGLE','APPLE','APP'])->nullable(false);
+            $table->enum('social_login', ['GOOGLE', 'APPLE', 'APP'])->nullable(false);
             $table->text('social_id')->nullable();
             $table->string('img_url')->nullable();
             $table->text('android_token')->nullable();
