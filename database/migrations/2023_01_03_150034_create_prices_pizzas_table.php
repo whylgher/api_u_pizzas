@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('prices_pizzas', function (Blueprint $table) {
             $table->id();
-            $table->double('12_size');
-            $table->double('18_size');
+            $table->double('regular');
+            $table->double('large');
             $table->unsignedBigInteger('pizza_id')->unique();
             $table->timestamps();
 

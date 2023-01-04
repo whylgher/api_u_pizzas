@@ -11,7 +11,7 @@ class PricePizza extends Model
 
     protected $table = 'prices_pizzas';
 
-    protected $fillable = ['12_size', '18_size', 'pizza_id'];
+    protected $fillable = ['regular', 'large', 'pizza_id'];
 
     /**
      * Get the Pizza that owns the PricePizza
