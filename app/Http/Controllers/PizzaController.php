@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Additional;
+use App\Models\Border;
 use App\Models\Pizza;
 use Exception;
 use Illuminate\Database\QueryException;
@@ -32,7 +34,11 @@ class PizzaController extends Controller
         if ($pizza) {
             $pizza->prices;
             $pizza->image;
-            return $pizza;
+            return response()->json([
+                'pizza' => $pizza,
+                'borders' => Border::all(),
+                'additionals' => Additional::all()
+            ]);
         }
     }
 
