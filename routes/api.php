@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\AdditionalController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BorderController;
 use App\Http\Controllers\FindByTokenController;
 use App\Http\Controllers\ImagePizzaController;
 use App\Http\Controllers\PizzaController;
@@ -44,6 +46,18 @@ Route::controller(TodoController::class)->group(function () {
     Route::get('todo/{id}', 'show');
     Route::put('todo/{id}', 'update');
     Route::delete('todo/{id}', 'destroy');
+});
+
+Route::controller(AdditionalController::class)->group(function () {
+    Route::post('additional/create', 'create');
+    Route::put('additional/update/{id}', 'update');
+    Route::get('additional', 'index');
+});
+
+Route::controller(BorderController::class)->group(function () {
+    Route::post('border/create', 'create');
+    Route::put('border/update/{id}', 'update');
+    Route::get('border', 'index');
 });
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
