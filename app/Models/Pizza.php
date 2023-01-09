@@ -23,6 +23,6 @@ class Pizza extends Model
      */
     public function prices()
     {
-        return $this->hasMany(PricePizza::class);
+        return $this->hasMany(PricePizza::class)->select('regular', 'large');
     }
 }
