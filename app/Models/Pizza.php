@@ -13,7 +13,7 @@ class Pizza extends Model
 
     public function image()
     {
-        return $this->hasMany(ImagePizza::class);
+        return $this->hasOne(ImagePizza::class)->select('image');
     }
 
     /**
@@ -23,6 +23,6 @@ class Pizza extends Model
      */
     public function prices()
     {
-        return $this->hasMany(PricePizza::class)->select('regular', 'large');
+        return $this->hasOne(PricePizza::class)->select('regular', 'large');
     }
 }
