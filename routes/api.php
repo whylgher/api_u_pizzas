@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BorderController;
+use App\Http\Controllers\DrinkController;
 use App\Http\Controllers\FindByTokenController;
 use App\Http\Controllers\ImagePizzaController;
 use App\Http\Controllers\PizzaController;
@@ -32,6 +33,11 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('logout', 'logout');
     Route::post('refresh', 'refresh');
     Route::put('confirm_login', 'confirmLogin');
+});
+
+Route::controller(DrinkController::class)->group(function () {
+    Route::post('drink/create', 'store');
+    Route::get('drink', 'index');
 });
 
 Route::controller(PizzaController::class)->group(function () {
