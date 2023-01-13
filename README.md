@@ -70,7 +70,10 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 docs: [Implementing JWT Authentication](https://blog.logrocket.com/implementing-jwt-authentication-laravel-9/#:~:text=Laravel%20JWT%20authentication%20vs.&text=Sanctum%20offers%20both%20session%2Dbased,implements%20full%20OAuth%202.0%20authorization.). 
 
-    Install:
-    composer require php-open-source-saver/jwt-auth
+
+# Startup Commands 
+    commands:
+    ./sail artisan storage:link
+    ./sail artisan jwt:secret
     
 
