@@ -21,6 +21,7 @@ class FindByTokenController extends Controller
         $data = $request->user();
 
         return response()->json([
+            'id' => $data->id,
             'email' => $data->email,
             'img_url' => $data->img_url,
             'data' => $data,
