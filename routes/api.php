@@ -8,6 +8,7 @@ use App\Http\Controllers\BorderController;
 use App\Http\Controllers\DrinkController;
 use App\Http\Controllers\FindByTokenController;
 use App\Http\Controllers\ImagePizzaController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PizzaController;
 use App\Http\Controllers\PricePizzaController;
 use App\Http\Controllers\TodoController;
@@ -33,6 +34,10 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('logout', 'logout');
     Route::post('refresh', 'refresh');
     Route::put('confirm_login', 'confirmLogin');
+});
+
+Route::controller(OrderController::class)->group(function () {
+    Route::post('order/create', 'store');
 });
 
 Route::controller(DrinkController::class)->group(function () {
