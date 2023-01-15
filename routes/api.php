@@ -38,6 +38,9 @@ Route::controller(AuthController::class)->group(function () {
 
 Route::controller(OrderController::class)->group(function () {
     Route::post('order/create', 'store');
+    Route::get('orders', 'index');
+    Route::get('order/client/{id}', 'showIdUser');
+    Route::get('order/{id}', 'show');
 });
 
 Route::controller(DrinkController::class)->group(function () {
