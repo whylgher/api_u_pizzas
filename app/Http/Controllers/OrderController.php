@@ -23,7 +23,21 @@ class OrderController extends Controller
 
     public function show($id)
     {
-        return Order::find($id);
+        $order = Order::find($id);
+
+        if ($order) {
+            return response()->json([
+                "message" => "success",
+                "name" => $order->name,
+                "description" => $order->description,
+                "status" => $order->status,
+                "amount" => $order->amount,
+                "tax" => $order->tax,
+                "total" => $order->total,
+                "order" => $order->order,
+                "drink" => $order->drink,
+            ]);
+        }
     }
 
     public function showIdUser($id)
@@ -37,12 +51,21 @@ class OrderController extends Controller
 
     public function store(Request $request)
     {
-        $order = Order::create($request->all());
+        $order = Order::create([
+            "user_id" => $request->user_id,
+            "name" => $request->name,
+            "description" => $request->description,
+            "status" => $request->status,
+            "amount" => $request->amount,
+            "tax" => $request->tax,
+            "total" => $request->total,
+            "order" => $request->order,
+            "drink" => $request->drink,
+        ]);
         if ($order) {
             return response()->json([
                 "message" => "success",
                 "order_id" => $order->id,
-                "order" => $order,
                 "status" => 200
             ]);
         }
