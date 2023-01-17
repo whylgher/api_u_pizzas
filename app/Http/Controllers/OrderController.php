@@ -51,17 +51,7 @@ class OrderController extends Controller
 
     public function store(Request $request)
     {
-        $order = Order::create([
-            "user_id" => $request->user_id,
-            "name" => $request->name,
-            "description" => $request->description,
-            "status" => $request->status,
-            "amount" => $request->amount,
-            "tax" => $request->tax,
-            "total" => $request->total,
-            "order" => $request->order,
-            "drink" => $request->drink,
-        ]);
+        $order = Order::create($request->all());
         if ($order) {
             return response()->json([
                 "message" => "success",
