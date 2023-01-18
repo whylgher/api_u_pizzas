@@ -42,7 +42,7 @@ class OrderController extends Controller
 
     public function showIdUser($id)
     {
-        $order = Order::all()->where('user_id', '=', $id);
+        $order = Order::all()->where('user_id', '=', $id)->sortByDesc("id");
         return response()->json([
             "message" => "success",
             "order" => $order
