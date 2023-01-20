@@ -25,7 +25,6 @@ return new class extends Migration
             $table->string('img_url')->nullable();
             $table->text('android_token')->nullable();
             $table->text('ios_token')->nullable();
-            $table->point('lat_lng')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
