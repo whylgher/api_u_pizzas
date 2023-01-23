@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdditionalController;
+use App\Http\Controllers\AddressController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -54,14 +55,6 @@ Route::controller(PizzaController::class)->group(function () {
     Route::get('pizza/{id}', 'show');
 });
 
-Route::controller(TodoController::class)->group(function () {
-    Route::get('todos', 'index');
-    Route::post('todo', 'store');
-    Route::get('todo/{id}', 'show');
-    Route::put('todo/{id}', 'update');
-    Route::delete('todo/{id}', 'destroy');
-});
-
 Route::controller(AdditionalController::class)->group(function () {
     Route::post('additional/create', 'create');
     Route::put('additional/update/{id}', 'update');
@@ -72,6 +65,12 @@ Route::controller(BorderController::class)->group(function () {
     Route::post('border/create', 'create');
     Route::put('border/update/{id}', 'update');
     Route::get('border', 'index');
+});
+
+Route::controller(AddressController::class)->group(function () {
+    Route::post('address/create', 'create');
+    Route::get('addresses/{id}', 'showIduser');
+    Route::get('address/{id}', 'show');
 });
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
