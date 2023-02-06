@@ -29,7 +29,7 @@ class ImagePizzaController extends Controller
             $image = $request->image;
             $name = time() . '.' . $image->getClientOriginalExtension();
             $request->image->storeAs('public', $name);
-            $url = URL::asset('storage/' . $name);
+            $url = 'storage/' . $name;
 
             $imagePizza = ModelsImagePizza::create([
                 'image' => $url,
