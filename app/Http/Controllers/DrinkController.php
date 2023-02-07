@@ -23,7 +23,7 @@ class DrinkController extends Controller
         $image = $request->image;
         $name = 'drink_' . time() . '.' . $image->getClientOriginalExtension();
         $request->image->storeAs('public', $name);
-        $url = URL::asset('storage/' . $name);
+        $url = 'storage/' . $name;
 
         $drink = Drink::create([
             'name' => $request->name,
