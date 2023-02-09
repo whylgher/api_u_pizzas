@@ -13,6 +13,7 @@ use App\Http\Controllers\MakePizzaController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PizzaController;
 use App\Http\Controllers\PricePizzaController;
+use App\Http\Controllers\SauceController;
 use App\Http\Controllers\TodoController;
 
 /*
@@ -76,4 +77,8 @@ Route::controller(AddressController::class)->group(function () {
 
 Route::group(['prefix' => 'v1'], function () {
     Route::apiResource('make_pizza', MakePizzaController::class);
+});
+
+Route::group(['prefix' => 'v1'], function () {
+    Route::apiResource('sauce', SauceController::class);
 });
