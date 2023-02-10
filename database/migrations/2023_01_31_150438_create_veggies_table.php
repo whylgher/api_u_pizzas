@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('veggies', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->double('price');
             $table->timestamps();
         });
     }

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('doughs', function (Blueprint $table) {
             $table->id();
-            $table->string('type');
+            $table->string('name');
             $table->integer('price');
             $table->timestamps();
         });
