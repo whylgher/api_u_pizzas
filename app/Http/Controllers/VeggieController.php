@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Topping;
+use App\Models\Veggie;
 use Illuminate\Http\Request;
 
-class ToppingController extends Controller
+class VeggieController extends Controller
 {
     public function __construct()
     {
@@ -16,17 +16,17 @@ class ToppingController extends Controller
     {
         return response()->json([
             "message" => "success",
-            "data" => Topping::all(),
+            "data" => Veggie::all(),
         ]);
     }
 
     public function store(Request $request)
     {
-        $topping = Topping::create($request->all());
+        $veggie = Veggie::create($request->all());
 
         return response()->json([
             "message" => "success",
-            "data" => $topping,
+            "data" => $veggie,
         ]);
     }
 }

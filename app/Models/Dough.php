@@ -10,7 +10,7 @@ class Dough extends Model
     use HasFactory;
 
     protected $fillable = [
-        'type',
+        'name',
         'price',
     ];
 }

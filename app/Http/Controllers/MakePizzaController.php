@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\MakePizzaRequest;
+use App\Models\Cheese;
+use App\Models\Dough;
 use App\Models\MakePizza;
+use App\Models\Sauce;
+use App\Models\Topping;
+use App\Models\Veggie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 
@@ -19,6 +24,11 @@ class MakePizzaController extends Controller
         return response()->json([
             'message' => 'success',
             'pizza' => MakePizza::all(),
+            'sauce' => Sauce::all(),
+            'cheese' => Cheese::all(),
+            'veggie' => Veggie::all(),
+            'topping' => Topping::all(),
+            'dough' => Dough::all(),
         ]);
     }
 
